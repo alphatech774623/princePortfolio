@@ -15,6 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}))
 app.use('/api',routes)
 
+app.get('/',(req,res)=>{
+  res.send('hello')
+})
 
 app.listen(3000,()=>{
     connectDB()
