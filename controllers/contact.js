@@ -12,7 +12,7 @@ export const contactHandler = async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'princemaurya529@gmail.com',         // Your Gmail
-      pass: 'wevyulsllcdekwfs'            // Use Gmail App Password
+      pass: process.env.APP_PASS           // Use Gmail App Password
     }
   });
 
