@@ -27,7 +27,7 @@ export const registerAdmin = async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-            maxAge: 60*60*1000,// 1 hour
+            maxAge: 60 * 60 * 1000,// 1 hour
             sameSite: 'Strict', // Set SameSite attribute for security
         });
 
@@ -54,7 +54,7 @@ export const loginAdmin = async (req, res) => {
     try {
         const admin = await Admin.findOne({ email });
         if (!admin) {
-            return res.status(404).json({ message: "Admin not found" });
+            return res.status(401).json({ message: "Invalid email or password" });
         }
 
         const isPasswordValid = await bcrypt.compare(password, admin.password);
@@ -68,13 +68,21 @@ export const loginAdmin = async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-            maxAge: 60*60*1000, // 1 hour
+            maxAge: 60 * 60 * 1000, // 1 hour
             sameSite: 'Strict', // Optional: Set SameSite attribute for security
         });
-        res.status(200).json({ message: "Login successful", admin});
+        res.status(200).json({ message: "Login successful", admin });
     } catch (error) {
-        console.error("Error logging in admin:", error);
-        res.status(500).json({ message: "Internal server error" });
+         if (error.response) {
+        // Backend responded with status code like 401 or 404
+        setStatus(`Error: ${error.response.data.message}`);
+    } else if (error.request) {
+        // Request was sent but no response
+        setStatus("No response from server");
+    } else {
+        // Something else
+        setStatus(`Error: ${error.message}`);
+    }
     }
 }
 
