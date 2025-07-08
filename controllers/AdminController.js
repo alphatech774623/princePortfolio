@@ -69,7 +69,7 @@ export const loginAdmin = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
             maxAge: 60 * 60 * 1000, // 1 hour
-            sameSite: 'Lax', // Optional: Set SameSite attribute for security
+            sameSite: 'None', // Optional: Set SameSite attribute for security
         });
         res.status(200).json({ message: "Login successful", admin });
     } catch (error) {
@@ -92,7 +92,7 @@ export const logoutAdmin = (req, res) => {
     res.clearCookie('token', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-        sameSite: 'none', // Optional: Set SameSite attribute for security
+        sameSite: 'None', // Optional: Set SameSite attribute for security
     });
     res.status(200).json({ message: "Logout successful" });
 }
