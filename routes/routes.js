@@ -15,7 +15,7 @@ routes.post('/contact', contactHandler);
 routes.post('/admin/login', loginAdmin);
  
 //route for admin logout
-routes.get('/admin/logout', logoutAdmin)
+routes.post('/admin/logout', logoutAdmin)
 
 // routes for projects
 
