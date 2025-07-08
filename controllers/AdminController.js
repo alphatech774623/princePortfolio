@@ -62,7 +62,11 @@ export const loginAdmin = async (req, res) => {
             return res.status(401).json({ message: "Invalid password" });
         }
         // Generate a token for the admin
-        const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({
+    id: admin._id,
+    name: admin.name,
+    email: admin.email
+  }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         // setting the token in a cookie
         res.cookie('token', token, {
