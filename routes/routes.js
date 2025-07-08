@@ -32,4 +32,13 @@ routes.put('/admin/updateProjects/:id', authenticateAdmin, upload.single('image'
 // route for deletingProjects
 routes.delete('/admin/deleteProjects/:id', authenticateAdmin, deleteProject);
 
+
+// route for varify token
+routes.get('/admin/verify', authenticateAdmin, (req, res) => {
+  res.status(200).json({
+    message: 'Admin verified successfully',
+    admin: req.admin // This comes from decoded token
+  });
+});
+
 export default routes;
