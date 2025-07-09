@@ -23,7 +23,7 @@ app.get('/',(req,res)=>{
   res.send('hello')
 })
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     connectDB()
     console.log(`app is running on port ${port}`)
 }) 
