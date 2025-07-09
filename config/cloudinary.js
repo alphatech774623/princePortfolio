@@ -16,11 +16,11 @@ const uploadImage = async (filePath) => {
             resource_type: 'auto', // Automatically detect the resource type
             folder: 'portfolio_images' // Optional: specify a folder in Cloudinary
         });
-        console.log(result.url)
+        // console.log(result.url)
         fs.unlinkSync(filePath); // Delete the file after upload
         return result.secure_url; // Return the URL of the uploaded image
     } catch (error) {
-        console.error("Error uploading image to Cloudinary:", error);
+        // console.error("Error uploading image to Cloudinary:", error);
         throw new Error("Image upload failed: " + error.message);
     }
 }
