@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo from '../assets/portfolioLogo.png'
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { FaGlobe } from "react-icons/fa6";
+import { RiMenu3Line } from "react-icons/ri";
+import { IoClose } from "react-icons/io5";
 const Navbar = () => {
+   
+    const [isOpen, setIsOpen] = useState(true)
+    const toggleMenu = ()=>{
+      
+        setIsOpen(!isOpen)
+    }
+
+
   return (
     <>
         <div className='navbarContainer'>
             <div className='navbar'>
                 <NavLink to='/' className='logo'><img src={logo} alt="" /></NavLink>
-            <ul>
+            <ul className={isOpen? "hide" : "show"}>                                                             
                 <NavLink className='listItem' to='/'>Home</NavLink>
                 <NavLink className='listItem' to='/about'>About</NavLink>
                 <NavLink className='listItem' to='/projects'>Projects</NavLink>
@@ -26,6 +36,9 @@ const Navbar = () => {
                 <a href="https://github.com/alphatech774623" target="_blank">
                     <FaGithub className="socialIcon"/>
                 </a>
+            </div>
+            <div className="menuBtn">
+                {isOpen?<RiMenu3Line style={{cursor : "pointer", color: "crimson"}} onClick={toggleMenu} /> : <IoClose style={{cursor : "pointer", color: "crimson"}} onClick={toggleMenu} />}
             </div>
             </div>
         </div>

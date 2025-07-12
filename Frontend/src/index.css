@@ -13,6 +13,8 @@ body, html {
 }
 
 body{
+  max-height: 100%;
+  max-width: 100%;
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   background-attachment: fixed;
   background-size: cover;
@@ -22,6 +24,7 @@ body{
 /* styling navbar start*/
 
 .navbar{
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -37,10 +40,11 @@ body{
   height: 50px;
   cursor: pointer;
 }
-.navbar ul {
+.navbar ul{
   list-style: none;
   display: flex;
   gap: 20px;
+  transition: all 0.2s ease;
 }
 
 .navbar ul a{
@@ -73,8 +77,45 @@ body{
 .socialLink a:hover{
  transform: scale(1.2);
 }
+.menuBtn{
+  display: none;
+}
+
+.show{
+  right: 0px;
+}
+.hide{
+  right: -100vw;
+}
 
 /* styling navbar end*/
+
+/*responsiveness of navbar start*/
+@media screen and (max-width : 850px) {
+  .navbar img{
+    height: 30px;
+  }
+  .navbar ul{
+    position: absolute;
+    flex-direction: column;
+    top: 60px;
+    /* right: -1000px; */
+    background-color: rgba(245, 245, 245, 0.897);
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .menuBtn{
+    display: block;
+  }
+  .socialLink{
+    gap: 10px;
+  }
+  .socialLink a{
+    font-size: 1rem;
+  }
+}
+/*responsiveness of navbar end*/
 
 
 /*Styling Home page Start*/
@@ -154,6 +195,9 @@ body{
   transform: scale(1.1);
   box-shadow: rgba(248, 131, 131, 0.19) 0px 10px 20px, rgba(255, 138, 138, 0.23) 0px 6px 6px;
 }
+
+
+
 /*Styling Home page End*/
 
 
@@ -163,7 +207,7 @@ body{
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  margin: 20px 170px;
+  margin: 20px 80px;
 }
 
 .about h1 {
@@ -178,6 +222,7 @@ body{
 
 .about-sections{
   display: flex;
+  gap: 30px;
 }
 
 .about-left{
@@ -242,8 +287,9 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  margin: 20px 170px;
+  margin: 20px auto;
 }
 
 .projects h1 {
@@ -273,7 +319,8 @@ body{
   background: linear-gradient(270deg, #dd8533d7 10%, rgb(220, 20, 60) 100%);
   border-radius: 10px;
   overflow-x: scroll;
-  padding: 20px;
+  padding: 5px;
+  border: 5px groove #fff;
 }
 
 .cards-container::-webkit-scrollbar {
@@ -284,7 +331,7 @@ body{
 }
 
 .card{
-  min-width: 300px;
+  min-width: 250px;
   height: 350px;
   background-color: #fff;
   border-radius: 10px;
@@ -732,3 +779,180 @@ body{
 }
 
 /*styling dashboard page end*/
+
+/*Responsiveness start*/
+
+  @media screen and (max-width : 1090px) {
+    body{
+      width: 100vw;
+      overflow: hidden !important;
+    }
+    .heroContainer{
+      padding: 50px 30px;
+    }
+    .hero-action{
+      gap: 15px;
+      width: 100%;
+      padding: 0px;
+    }
+    .hero-action h1{
+      font-size: 30px;
+      width: 50%;
+
+    }
+    .hero-action p{
+      width: 50%;
+    }
+
+    /*About Page*/
+    .about h1 {
+      font-size: 30px;
+      padding: 0px;
+      width: 160px;
+    }
+
+    .about-para p{
+      font-size: 18px;
+    }
+
+    .about img{
+      height: 300px;
+    }
+
+    .about-skills{
+      gap: 10px;
+      width: 100%;
+    }
+
+    .about-skill{
+      gap: 0px;
+    }
+
+    .about-skill p{
+      font-size: 15px;
+    }
+
+    /*My Project Page*/
+
+    .projects{
+      margin: 20px auto;
+    }
+
+    .projects h1{
+      font-size: 30px;
+      padding: 0px;
+      width: fit-content;
+    }
+
+    .projects p{
+      font-size: 15px;
+    }
+
+    /*Contact Page*/
+
+    .contactContainer h1{
+       font-size: 30px;
+      padding: 0px;
+      width: fit-content;
+    }
+    
+    .ContactInfo p{
+      font-size: 15px;
+    }
+
+    .ContactInfo h2{
+      font-size: 20px;
+    }
+  }
+
+ 
+
+   @media screen and (max-width : 780px){
+
+    .about{
+      margin: 20px 30px;
+    }
+    .about-skill p{
+      min-width: 100px;
+      font-size: 15px;
+    }
+
+    .about-para p{
+      font-size: 14px;
+    }
+     .about-left img{
+        height: 200px;
+      }
+
+      /*Resume page*/
+      .resume-text{
+        margin: 20px auto;
+      }
+       .resume-text h1{
+      font-size: 30px;
+      padding: 0px;
+      width: fit-content;
+    }
+
+    /*Contact Page*/
+
+    .contactContainer{
+      margin: 20px auto;
+      padding: 1rem;
+    }
+
+    .contact{
+      max-width: 400px;
+    }
+
+    .contact form input, .contact form textarea{
+      width: 300px;
+    }
+  }
+   @media screen and (max-width : 480px){
+    .heroContainer{
+      padding: 30px 20px;
+    }
+    .hero-action h1{
+      font-size: 20px;
+    }
+
+    .hero-action p{
+      font-size: 15px;
+      width: 90%;
+    }
+
+    .btn-container{
+      gap: 10px;
+      flex-direction: column;
+    }
+
+    .btn-container .btn{
+      padding: 5px 10px;
+      font-size: 10px;
+    }
+
+    /*About Page*/
+      .about-para p{
+      font-size: 10px;
+    }
+      .about-skill p{
+        min-width: 50px;
+      font-size: 10px;
+    }
+
+    .about-left img{
+        height: 150px;
+      }
+
+      /*Contact page*/
+       .contact{
+      max-width: 300px;
+    }
+
+    .contact form input, .contact form textarea{
+      width: 200px;
+    }
+   }
+  
+/*Responsiveness end*/
